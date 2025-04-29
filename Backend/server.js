@@ -17,7 +17,7 @@ import { CreateDB } from './config/db.js';
 import moodRoutes from './routes/mood.routes.js';
 
 // const mongoUri = process.env.MONGO_URL;
-const port = process.env.port || 3001;
+const port = process.env.PORT || 3001;
 CreateDB;
 
 const app = express();
@@ -36,7 +36,11 @@ const io = new Server(server,{
 // mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 // .then(()=>console.log("MongoDB Connected"))
 // .catch((err)=>console.log(err));
-
+app.use((req, res, next) => {
+    console.log(`[${req.method}] ${req.originalUrl}`);
+    next();
+  });
+  
 app.use(bodyParser.json());
 app.use("/api/admins", adminRoutes);
 app.use("/api/institutions", institutionRoutes);
