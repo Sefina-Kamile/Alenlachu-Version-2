@@ -17,7 +17,7 @@ import { CreateDB } from './config/db.js';
 import moodRoutes from './routes/mood.routes.js';
 
 // const mongoUri = process.env.MONGO_URL;
-const port = process.env.PORT || 3001;
+const port = process.env.PORT ;
 CreateDB;
 
 const app = express();
